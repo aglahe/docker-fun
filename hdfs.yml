@@ -1,43 +1,14 @@
 version: '2'
 services:
-  zookeeper:
-    build: ./zookeeper
-    container_name: "zk1"
+  hdfs:
+    build: ./hdfs
+    container_name: "dfs"
     network_mode: "bridge"
     ports:
-      - "2181:2181"
-      - "2888:2888"
-      - "3888:3888"
-    environment:
-      - ZK_ID=1
-      - ZK_SERVERS=${DOCKER_MACHINE_IP}:2181
-  active-namenode:
-    build: ./hdfs
-    container_name: "nn1"
-    depends_on:
-      - journalnode
-      - zookeeper
-    network_mode: "host"
-  standby-namenode:
-    build: ./hdfs
-    container_name: "nn2"
-    depends_on:
-      - journalnode
-      - zookeeper
-    network_mode: "host"
-  journalnode:
-    build: ./hdfs
-    container_name: "journalnode"
-    network_mode: "bridge"
-    ports:
-      - "2181:2181"
-  datanode:
-    build: ./hdfs
-    container_name: "datanode"
-    depends_on:
-      - journalnode
-      - active-namenode
-      - standby-namenode
-    network_mode: "bridge"
-    ports:
-      - "2181:2181"
+      - "1004:1004"
+      - "1006:1006"
+      - "8022:8022"
+      - "9000:9000"
+      - "50010:50010"
+      - "50020:50020
+      - "50075:50075"
