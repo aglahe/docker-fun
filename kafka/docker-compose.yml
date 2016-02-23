@@ -1,0 +1,26 @@
+version: '2'
+services:
+  zookeeper:
+    build: ../zookeeper
+    container_name: "zk1"
+    network_mode: "bridge"
+    ports:
+      - "2181:2181"
+      - "2888:2888"
+      - "3888:3888"
+    environment:
+      - ZK_ID=1
+      - ZK_SERVERS=${DOCKER_MACHINE_IP}:2181
+  kafka:
+    depends_on:
+      - zookeeper
+    build: ../kafka-broker
+    container_name: "kafka"
+    network_mode: "bridge"
+    ports:
+      - "9092:9092"
+      - "9999:9999"
+    environment:
+      - ZK_IPS=${DOCKER_MACHINE_IP}:2181
+      - BROKER_ID=1
+      - CLUSTER_NAME=test
