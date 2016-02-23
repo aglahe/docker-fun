@@ -1,7 +1,7 @@
 version: '2'
 services:
   zookeeper:
-    build: ../zookeeper
+    build: ./zookeeper
     container_name: "zk1"
     network_mode: "bridge"
     ports:
@@ -14,7 +14,7 @@ services:
   kafka:
     depends_on:
       - zookeeper
-    build: ../kafka-broker
+    build: ./kafka-broker
     container_name: "kafka"
     network_mode: "bridge"
     ports:
