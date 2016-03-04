@@ -1,6 +1,6 @@
 version: '2'
 services:
-  hdfs:
+  yarn:
     build: ./hadoop
     container_name: "yarn"
     command: "yarn"

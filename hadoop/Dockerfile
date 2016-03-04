@@ -27,7 +27,7 @@ COPY mapred-site.xml.template "$HADOOP_CONF_DIR"/mapred-site.xml
 EXPOSE 8020 50070 50010 50020 50075
 
 # YARN
-EXPORT 8032 8030 8031 8033 8088 8040 8042 8041
+EXPOSE 8032 8030 8031 8033 8088 8040 8042 8041
 
 # Copy the bootstrap shell
 COPY bootstrap.sh /bin/bootstrap.sh
