@@ -1,0 +1,50 @@
+version: '2'
+services:
+  zookeeper:
+    build: ./zookeeper
+    container_name: "zk1"
+    network_mode: "bridge"
+    ports:
+      - "2181:2181"
+      - "2888:2888"
+      - "3888:3888"
+    environment:
+      - ZK_ID=1
+      - ZK_SERVERS=${DOCKER_MACHINE_IP}:2181
+  hdfs:
+    build: ./hadoop
+    container_name: "dfs"
+    command: "start"
+    network_mode: "bridge"
+    ports:
+      - "8020:8020"
+      - "50070:50070"
+      - "50010:50010"
+      - "50020:50020"
+      - "50075:50075"
+  yarn:
+    build: ./hadoop
+    container_name: "yarn"
+    command: "yarn"
+    network_mode: "bridge"
+    ports:
+      - "8032:8032"
+      - "8030:8030"
+      - "8031:8031"
+      - "8033:8033"
+      - "8040:8040"
+      - "8042:8042"
+      - "8041:8041"
+  kafka:
+    depends_on:
+      - zookeeper
+    build: ./kafka-broker
+    container_name: "kafka"
+    network_mode: "bridge"
+    ports:
+      - "9092:9092"
+      - "9999:9999"
+    environment:
+      - ZK_IPS=${DOCKER_MACHINE_IP}:2181
+      - BROKER_ID=1
+      - CLUSTER_NAME=test
