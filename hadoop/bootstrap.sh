@@ -9,7 +9,11 @@ case "$1" in
     $HADOOP_PREFIX/sbin/hadoop-daemon.sh start namenode
     $HADOOP_PREFIX/bin/hdfs datanode
     ;;
+  yarn)
+    $HADOOP_PREFIX/sbin/yarn-daemon.sh start resourcemanager
+    $HADOOP_PREFIX/bin/yarn nodemanager
+    ;;
   *)
-    echo $"Usage: {dfs}"
+    echo $"Usage: {yarn|dfs}"
     eval $*
 esac

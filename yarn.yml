@@ -1,0 +1,15 @@
+version: '2'
+services:
+  hdfs:
+    build: ./hadoop
+    container_name: "yarn"
+    command: "yarn"
+    network_mode: "bridge"
+    ports:
+      - "8032:8032"
+      - "8030:8030"
+      - "8031:8031"
+      - "8033:8033"
+      - "8040:8040"
+      - "8042:8042"
+      - "8041:8041"
