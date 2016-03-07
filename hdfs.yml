@@ -2,8 +2,9 @@ version: '2'
 services:
   hdfs:
     build: ./hadoop
-    container_name: "dfs"
-    command: "start"
+    image: hadoop
+    container_name: "hdfs"
+    command: "dfs"
     network_mode: "bridge"
     ports:
       - "8020:8020"
