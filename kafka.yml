@@ -22,5 +22,6 @@ services:
       - "9999:9999"
     environment:
       - ZK_IPS=${DOCKER_MACHINE_IP}:2181
+      - ADVERTISED_HOST_NAME=${DOCKER_MACHINE_IP}
       - BROKER_ID=1
       - CLUSTER_NAME=test
