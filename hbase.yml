@@ -1,0 +1,13 @@
+version: '2'
+services:
+  hbase:
+    build: ./hbase
+    image: hbase
+    network_mode: "bridge"
+    hostname: hbase-docker
+    ports:
+      - "2181:2181"
+      - "16000:16000"
+      - "16010:16010"
+      - "16020:16020"
+      - "16030:16030"

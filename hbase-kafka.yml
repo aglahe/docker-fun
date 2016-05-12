@@ -1,18 +1,19 @@
 version: '2'
 services:
-  zookeeper:
-    build: ./zookeeper
+  hbase:
+    build: ./hbase
+    image: hbase
     network_mode: "bridge"
+    hostname: hbase-docker
     ports:
       - "2181:2181"
-      - "2888:2888"
-      - "3888:3888"
-    environment:
-      - ZK_ID=1
-      - ZK_SERVERS=${DOCKER_MACHINE_IP}:2181
+      - "16000:16000"
+      - "16010:16010"
+      - "16020:16020"
+      - "16030:16030"
   kafka:
     depends_on:
-      - zookeeper
+      - hbase
     build: ./kafka-broker
     network_mode: "bridge"
     ports:
