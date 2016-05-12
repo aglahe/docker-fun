@@ -1,0 +1,12 @@
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+  <property>
+    <name>hbase.cluster.distributed</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hbase.rootdir</name>
+    <value>file:///data</value>
+  </property>
+</configuration>
