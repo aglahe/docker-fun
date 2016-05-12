@@ -29,6 +29,9 @@ EXPOSE 8020 50070 50010 50020 50075
 # YARN
 EXPOSE 8032 8030 8031 8033 8088 8040 8042 8041
 
+# Location to store data
+VOLUME ["/data"]
+
 # Copy the bootstrap shell
 COPY bootstrap.sh /bin/bootstrap.sh
 

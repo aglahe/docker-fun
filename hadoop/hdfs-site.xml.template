@@ -17,4 +17,14 @@
   <name>dfs.webhdfs.enabled</name>
   <value>true</value>
 </property>
+
+<property>
+  <name>dfs.namenode.name.dir</name>
+  <value>file:///data/hdfs/nn</value>
+</property>
+<property>
+  <name>dfs.datanode.data.dir</name>
+  <value>file:///data/hdfs/dn</value>
+</property>
+
 </configuration>
