@@ -26,12 +26,13 @@ sed -r -i "s/(broker.id)=(.*)/\1=$BROKER_ID/g" $KAFKA_HOME/config/server.propert
 
 # Set the external host and port
 if [ ! -z "$ADVERTISED_HOST_NAME" ]; then
-    echo "advertised host: $ADVERTISED_HOST"
-    sed -r -i "s/#(advertised.host.name)=(.*)/\1=$ADVERTISED_HOST_NAME/g" $KAFKA_HOME/config/server.properties
+    echo "advertised host: $ADVERTISED_HOST_NAME"
+    echo "advertised.host.name=${ADVERTISED_HOST_NAME}" >> $KAFKA_HOME/config/server.properties
 fi
+
 if [ ! -z "$ADVERTISED_PORT" ]; then
     echo "advertised port: $ADVERTISED_PORT"
-    sed -r -i "s/#(advertised.port)=(.*)/\1=$ADVERTISED_PORT/g" $KAFKA_HOME/config/server.properties
+    echo "advertised port: $ADVERTISED_PORT" >> $KAFKA_HOME/config/server.properties
 fi
 
 if [ ! -z "$LOG_RETENTION_HOURS" ]; then

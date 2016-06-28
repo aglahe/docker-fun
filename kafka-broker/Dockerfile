@@ -3,9 +3,9 @@ MAINTAINER Aaron Glahe <aarongmldt@gmail.com>
 
 # Setup env
 USER root
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+#ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 ENV SCALA_VERSION 2.11
-ENV KAFKA_VERSION 0.9.0.1
+ENV KAFKA_VERSION 0.10.0.0
 ENV KAFKA_HOME /opt/kafka
 ENV JMX_PORT 9999
 
