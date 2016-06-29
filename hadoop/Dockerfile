@@ -1,10 +1,11 @@
-FROM java:8
+FROM anapsix/alpine-java
 MAINTAINER Aaron Glahe <aarongmldt@gmail.com>
 
-# Setup env
+# Setup the simple things
+RUN apk add --update wget docker coreutils
 USER root
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
+# Setup env
 ENV INSTALL_LOCATION /opt
 ENV HADOOP_PREFIX /opt/hadoop
 ENV HADOOP_COMMON_HOME /opt/hadoop

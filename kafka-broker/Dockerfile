@@ -1,19 +1,18 @@
-FROM java:8
+FROM anapsix/alpine-java
 MAINTAINER Aaron Glahe <aarongmldt@gmail.com>
 
-# Setup env
+# Bring in the simple things
+RUN apk add --update wget docker coreutils
 USER root
-#ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+
+# Setup env
 ENV SCALA_VERSION 2.11
 ENV KAFKA_VERSION 0.10.0.0
 ENV KAFKA_HOME /opt/kafka
 ENV JMX_PORT 9999
 
 # Install Kafka
-RUN apt-get update && apt-get install -y wget && \
- rm -rf /var/lib/apt/lists/* && \
- apt-get clean && \
- wget -q -O - http://apache.mirrors.hoobly.com/kafka/"$KAFKA_VERSION"/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz | tar -xzf - -C /opt && \
+RUN wget -q -O - http://apache.mirrors.hoobly.com/kafka/"$KAFKA_VERSION"/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz | tar -xzf - -C /opt && \
  ln -s /opt/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION" "$KAFKA_HOME"
 
 #Ports
