@@ -1,8 +1,11 @@
-FROM java:8
+FROM anapsix/alpine-java
 MAINTAINER Aaron Glahe <aarongmldt@gmail.com>
 
-# Setup env
+# Setup the simple things
+RUN apk add --update wget docker coreutils
 USER root
+
+# Setup env
 ENV INSTALL_LOCATION /opt
 ENV HBASE_PREFIX /opt/hbase
 ENV HBASE_HOME /opt/hbase
